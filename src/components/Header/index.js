@@ -1,20 +1,31 @@
 import React from "react";
 import { Navbar, NavItem, Row, Icon } from 'react-materialize';
 
+import styled from 'styled-components';
 import logo from '../../images/logo.png';
-import './index.css';
+
+const NavbarBlue = styled(Navbar)`
+  background-color: #75d3f4;`
+;
+
+const Logo = styled.img`
+  margin-top: 15px;`
+;
+
+const IconUser = styled(Icon)`
+  font-size: 40px !important;`
+;
 
 const Header = () => (
-  <Row>
-    <Navbar brand={<img src={logo} alt="OneBitTwitter" 
-    className="responsive-img col m6 center logo" />} right className="navbar">
+  <Row>  
+    <NavbarBlue brand={<Logo src={logo} className="responsive-img col m6 center" />} right>
       <NavItem href='/logout'>
         Logout
       </NavItem>
       <NavItem href='/user/x/edit'>
-          <Icon class="icon_user">account_circle</Icon>
+        <IconUser>account_circle</IconUser>
       </NavItem>
-    </Navbar>
+    </NavbarBlue>
   </Row>
 );
 
