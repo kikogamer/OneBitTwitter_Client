@@ -4,6 +4,9 @@ import styled from 'styled-components';
 import RowNoBottomMargin from '../common/RowNoBottomMargin';
 import JustifiedText from '../common/JustifiedText';
 
+import UserFollow from '../../containers/UserFollow';
+import UserUnFollow from '../../containers/UserUnFollow';
+
 const Avatar = styled.img`
   margin-top: 8px;
   width: 100%`
@@ -21,7 +24,7 @@ const UserInfo = (props) => (
         <b className="grey-text text-darken-2">{props.name}</b>
       </Col>
       <Col m={3} s={3}>
-
+        {props.followed ? <UserFollow /> : <UserUnFollow />}
       </Col>
     </RowNoBottomMargin>
     <Row>
