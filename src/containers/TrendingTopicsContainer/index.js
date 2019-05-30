@@ -1,8 +1,14 @@
 import React, { Component } from 'react';
 import TrendingTopics from '../../components/TrendingTopics'
 import { connect } from 'react-redux';
+import { getHashtags } from './actions';
+import { bindActionCreators } from 'redux';
 
 class TrendingTopicsContainer extends Component {
+  componentDidMount() {
+    this.props.getHashtags();
+  }
+
   render() {
     return (
       <div>
@@ -18,4 +24,8 @@ function mapStateToProps(state) {
   }
 };
 
-export default connect(mapStateToProps)(TrendingTopicsContainer)
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ getHashtags }, dispatch)
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(TrendingTopicsContainer)
