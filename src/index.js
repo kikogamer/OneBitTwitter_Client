@@ -2,20 +2,18 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import * as serviceWorker from './serviceWorker';
+import registerServiceWorker from './registerServiceWorker';
 import { Provider } from 'react-redux';
-import configureStore, { history } from './configureStore';
-import { ConnectedRouter } from 'connected-react-router'
-
-const store = configureStore(/* provide initial state if any */)
+import Store, { history } from './configureStore';
+import { ConnectedRouter } from 'react-router-redux'
 
 ReactDOM.render(
-  <Provider store={store}>
+  <Provider store={Store}>
     <ConnectedRouter history={history}>
-      <App />
+      <App/>
     </ConnectedRouter>
   </Provider>
   , document.getElementById('root')
 );
 
-serviceWorker.unregister();
+registerServiceWorker();
