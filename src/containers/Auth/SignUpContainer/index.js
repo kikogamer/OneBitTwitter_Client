@@ -1,20 +1,33 @@
 import React from 'react'
 import SignUp from '../../../components/Auth/SignUp'
+import { register } from './actions';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
 
 class SignUpContainer extends React.Component {
   constructor() {
     super()
-    this.handleSubmit = this.handleSubmit.bind(this) 
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
 
   handleSubmit(form) {
-    console.log(form)
+    this.props.register(form)
   }
 
   render() {
-    return <SignUp handleSubmit={this.handleSubmit}/>
+    return <SignUp handleSubmit={this.handleSubmit} />
   }
 }
 
-export default SignUpContainer
+function mapStateToProps(state) {
+  return {
+
+  }
+};
+
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ register }, dispatch)
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignUpContainer)
