@@ -1,6 +1,8 @@
 import React from "react";
 import { Row, Col, Card } from 'react-materialize';
 import MainLayout from '../MainLayout'
+import UserInfoContainer from '../../containers/UserInfoContainer'
+import TrendingTopicsContainer from '../../containers/TrendingTopicsContainer'
 import { LocalForm, Control } from 'react-redux-form';
 import styled from 'styled-components';
 
@@ -21,6 +23,11 @@ const ProfileEdit = (props) => (
           </Row>
 
           <Row>
+            <Row className="center">
+              <Col m={4} className="offset-m4">
+                <ProfileImage src={props.image_preview} className="responsive-img circle" />
+              </Col>
+            </Row>
             <Col m={12} s={12} offset="">
               <div className="form">
                 <div>
@@ -30,9 +37,14 @@ const ProfileEdit = (props) => (
                       email: props.email,
                       description: props.description,
                       id: props.id,
+                      image_preview: props.image_preview
                     }}
                   >
 
+                    <Control.file model=".photo"
+                      onChange={(value) => props.encodeFile(value)}
+                      style={{ 'marginBottom': '20px' }}
+                    />
                     <Control.text model=".name"
                       name="name"
                       placeholder="Name"

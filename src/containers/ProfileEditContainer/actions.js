@@ -1,4 +1,7 @@
+import axios from 'axios';
 import API from '../../api.js';
+import { UPDATE_IMAGE_PREVIEW } from './constants';
+
 
 export function updateUserInfo({ id, name, email, description, photo }) {
   const headers = { 'Authorization': 'Bearer ' + localStorage.getItem('jwt') };
@@ -32,4 +35,11 @@ export function updateUserPassword({ id, password, password_confirmation }) {
       }
     );
   };
+}
+
+export function updateImagePreview(image_preview) {
+  return {
+    type: UPDATE_IMAGE_PREVIEW,
+    payload: image_preview
+  }
 }
