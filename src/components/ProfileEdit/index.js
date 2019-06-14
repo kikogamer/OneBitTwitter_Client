@@ -1,8 +1,6 @@
 import React from "react";
 import { Row, Col, Card } from 'react-materialize';
 import MainLayout from '../MainLayout'
-import UserInfoContainer from '../../containers/UserInfoContainer'
-import TrendingTopicsContainer from '../../containers/TrendingTopicsContainer'
 import { LocalForm, Control } from 'react-redux-form';
 import styled from 'styled-components';
 

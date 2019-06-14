@@ -13,7 +13,7 @@ class App extends Component {
       <div>
         <Switch>
           <Route exact path="/" component={HomePageContainer} />
-          <Route exact path="/user/:id" component={ProfilePageContainer} />
+          <PrivateRoute exact path="/user/:id" component={ProfilePageContainer} />
           <PrivateRoute exact path="/timeline" component={TimelineContainer} />
           <PrivateRoute exact path="/user/:id/edit" component={ProfileEditContainer} />
         </Switch>
