@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import ProfileEdit from '../../components/ProfileEdit'
+import { updateUserInfo, updateUserPassword } from './actions';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
 class ProfileEditContainer extends Component {
 
@@ -10,18 +13,28 @@ class ProfileEditContainer extends Component {
   }
 
   updateProfile(values) {
-    console.log('Update Profile', values)
+    this.props.updateUserInfo(values)
   }
 
   updatePassword(values) {
-    console.log('Update Password', values)
+    this.props.updateUserPassword(values)
   }
 
   render() {
     return (
-      <ProfileEdit updateProfile={this.updateProfile} updatePassword={this.updatePassword} />
+      <ProfileEdit updateProfile={this.updateProfile} updatePassword={this.updatePassword} {...this.props.current_user} />
     );
   }
 }
 
-export default ProfileEditContainer;
+function mapStateToProps(state) {
+  return {
+    current_user: state.current_user
+  }
+};
+
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ updateUserInfo, updateUserPassword }, dispatch)
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProfileEditContainer)

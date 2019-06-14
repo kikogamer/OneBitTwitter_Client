@@ -2,6 +2,12 @@ import React from "react";
 import { Row, Col, Card } from 'react-materialize';
 import MainLayout from '../MainLayout'
 import { LocalForm, Control } from 'react-redux-form';
+import styled from 'styled-components';
+
+const ProfileImage = styled.img`
+  margin-top: 10px;
+  margin-bottom: 10px;
+`;
 
 const ProfileEdit = (props) => (
   <MainLayout>
@@ -18,7 +24,15 @@ const ProfileEdit = (props) => (
             <Col m={12} s={12} offset="">
               <div className="form">
                 <div>
-                  <LocalForm onSubmit={(values) => props.updateProfile(values)}>
+                  <LocalForm onSubmit={(values) => props.updateProfile(values)}
+                    initialState={{
+                      name: props.name,
+                      email: props.email,
+                      description: props.description,
+                      id: props.id,
+                    }}
+                  >
+
                     <Control.text model=".name"
                       name="name"
                       placeholder="Name"
@@ -50,12 +64,18 @@ const ProfileEdit = (props) => (
             <Col m={12} s={12} offset="">
               <div className="form">
                 <div>
-                  <LocalForm onSubmit={(values) => props.updatePassword(values)}>
+                  <LocalForm onSubmit={(values) => props.updatePassword(values)}
+                    initialState={{
+                      id: props.id,
+                    }}
+                  >
                     <Control.text model=".password"
+                      type="password"
                       name="password"
                       placeholder="Password"
                     />
                     <Control.text model=".password_confirmation"
+                      type="password"
                       name="password_confirmation"
                       placeholder="Password Confirmation"
                     />
