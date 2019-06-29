@@ -1,12 +1,21 @@
 import React, { Component } from 'react';
 import InvisibleButton from '../../components/common/InvisibleButton';
 import { Icon } from 'react-materialize';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { follow } from './actions'
 
 class UserFollow extends Component {
-  follow() {
-    console.log('follow')
-  }
 
+  constructor() {
+    super()
+    this.follow = this.follow.bind(this)
+  }
+  
+  follow() {
+    this.props.follow(this.props.user.id)    
+  }
+  
   render() {
     return (
       <InvisibleButton onClick={this.follow}>
@@ -16,4 +25,14 @@ class UserFollow extends Component {
   }
 }
 
-export default UserFollow;
+function mapStateToProps(state) {
+  return {
+    user: state.user
+  }
+};
+
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ follow }, dispatch)
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(UserFollow);

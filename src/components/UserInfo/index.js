@@ -30,7 +30,7 @@ const UserInfo = (props) => (
         <b className="grey-text text-darken-2">{ props.name }</b>
       </Col>
       <Col m={3} s={3}>
-        { props.followed ?  <UserUnFollow/> : <UserFollow/> }
+        { props.followed ?  <UserUnFollow/> : <UserFollow /> }
       </Col>
     </RowNoBottomMargin>
     <Row>
@@ -40,7 +40,7 @@ const UserInfo = (props) => (
     </Row>
     <RowNoBottomMargin>
       <Col m={4}>
-        <a href="#" className="grey-text text-darken-2">
+        <a href="#!" className="grey-text text-darken-2">
           <RowNoBottomMargin className="tooltipped" data-tooltip="Tweets">
             <Col m={5}>
               <Icon>message</Icon>
@@ -52,7 +52,7 @@ const UserInfo = (props) => (
         </a>
       </Col>
       <Col m={4}>
-        <a href="#" className="grey-text text-darken-2">
+        <a href="#!" className="grey-text text-darken-2">
           <RowNoBottomMargin className="tooltipped" data-tooltip="Followers">
             <Col m={5}>
               <Icon>people</Icon>
@@ -64,7 +64,7 @@ const UserInfo = (props) => (
         </a>
       </Col>
       <Col m={4}>
-        <a href="#" className="grey-text text-darken-2">
+        <a href="#!" className="grey-text text-darken-2">
           <RowNoBottomMargin className="tooltipped" data-tooltip="Followed">
             <Col m={5}>
               <Icon>people_outline</Icon>
