@@ -1,7 +1,17 @@
-import { FETCH_TWEETS, DELETE_TWEET, ADD_TWEET, LIKE_TWEET } from './constants';
+import { FETCH_TWEETS, DELETE_TWEET, ADD_TWEET, LIKE_TWEET, DISLIKE_TWEET } from './constants';
 
 // The initial state of the App
 const initialState = { tweets: [] };
+
+const updateTweetOnList = (state, payload) => {
+  return state.map((tweet) => {
+    if (tweet.id === payload.id) { 
+      tweet.liked = payload.liked
+      tweet.likes_count = payload.likes_count
+    }
+    return tweet
+  })
+}
 
 export default function (state = initialState, action) {
   switch (action.type) {
@@ -12,13 +22,9 @@ export default function (state = initialState, action) {
     case ADD_TWEET:
       return [action.payload, ...state]
     case LIKE_TWEET:
-      return state.map((tweet) => {
-        if (tweet.id === action.payload.id) { 
-          tweet.liked = action.payload.liked
-          tweet.likes_count = action.payload.likes_count
-        }
-        return tweet
-      })
+      return updateTweetOnList(state, action.payload)
+    case DISLIKE_TWEET:
+      return updateTweetOnList(state, action.payload)
     default:
       return state;
   }

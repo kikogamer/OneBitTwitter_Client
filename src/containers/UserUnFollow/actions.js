@@ -3,7 +3,6 @@ import { USER_UNFOLLOW } from '../UserInfoContainer/constants';
 
 export function unfollow(id) {
   const headers = { 'Authorization': 'Bearer ' + localStorage.getItem('jwt') };
-  console.log(headers)
   const request = Api.delete(`/users/${id}/follow`, { headers: headers });
 
   return (dispatch) => {
