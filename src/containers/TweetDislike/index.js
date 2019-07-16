@@ -2,27 +2,27 @@ import React, { Component } from 'react'
 import { Col, Icon } from 'react-materialize'
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import LikeButton from '../../components/common/LikeButton';
-import { like } from './actions'
+import DislikeButton from '../../components/common/DislikeButton';
+import { dislike } from './actions'
 
-class TweetLike extends Component {
+class TweetDislike extends Component {
 
   constructor() {
     super()
-    this.like = this.like.bind(this)
+    this.dislike = this.dislike.bind(this)
   }
 
-  like() {
-    this.props.like(this.props.id)
+  dislike() {
+    this.props.dislike(this.props.id)
   }
-  
+
   render() {
     return (
       <Col s={1} m={1}>
-        <LikeButton onClick={this.like}>
+        <DislikeButton onClick={this.dislike} >
           <Icon>thumb_up</Icon>
           <span>{(this.props.likes_count > 0 ? this.props.likes_count : '')}</span>
-        </LikeButton>
+        </DislikeButton>
       </Col>
     )
   }
@@ -35,7 +35,7 @@ function mapStateToProps(state) {
 };
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ like }, dispatch)
+  return bindActionCreators({ dislike }, dispatch)
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(TweetLike);
+export default connect(mapStateToProps, mapDispatchToProps)(TweetDislike);
