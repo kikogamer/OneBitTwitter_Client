@@ -6,6 +6,7 @@ import InvisibleButton from '../../components/common/InvisibleButton';
 import fake_avatar from '../../images/fake_avatar.png';
 import TweetLike from "../../containers/TweetLike";
 import TweetDislike from '../../containers/TweetDislike'
+import Retweet from '../../containers/Retweet'
 
 const Avatar = styled.img`
   width: 100%`
@@ -48,11 +49,7 @@ const TweetUnit = (props) => (
         </Row>
         <RowNoBottomMargin>
           {props.liked ? <TweetDislike id={props.id} likes_count={props.likes_count} /> : <TweetLike id={props.id} likes_count={props.likes_count} /> }
-          <Col s={1} m={1}>
-            <InvisibleButton>
-              <Icon>repeat</Icon>
-            </InvisibleButton>
-          </Col>
+          <Retweet {...props} />
         </RowNoBottomMargin>
       </Col>
     </RowNoBottomMargin>
