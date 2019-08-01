@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import TweetUnit from '../../components/TweetUnit'
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { deleteTweet, createTweet } from './actions.js';
+import { deleteTweet, createTweet, updateTweet } from './actions.js';
 import TweetNew from '../../components/TweetNew';
 
 class TweetListContainer extends Component {
@@ -11,6 +11,7 @@ class TweetListContainer extends Component {
     super()
     this.deleteTweet = this.deleteTweet.bind(this)
     this.postTweet = this.postTweet.bind(this)
+    this.updateTweet = this.updateTweet.bind(this)
   }
 
   deleteTweet(id) {
@@ -22,6 +23,10 @@ class TweetListContainer extends Component {
       this.props.createTweet(event.target.value)
       event.target.value = ""
     }
+  }
+
+  updateTweet(id, body) {
+    this.props.updateTweet(id, body)
   }
 
   render() {
@@ -36,6 +41,7 @@ class TweetListContainer extends Component {
             key={i}
             deleteTweet={this.deleteTweet}
             current_user={this.props.current_user}
+            updateTweet={this.updateTweet}
           />
         )}
       </div>
@@ -52,7 +58,7 @@ function mapStateToProps(state) {
 };
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ deleteTweet, createTweet }, dispatch)
+  return bindActionCreators({ deleteTweet, createTweet, updateTweet }, dispatch)
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(TweetListContainer)

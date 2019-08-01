@@ -1,12 +1,12 @@
 import React from "react";
-import { Row, Col, Card, Icon, Dropdown, NavItem } from 'react-materialize';
+import { Row, Col, Card } from 'react-materialize';
 import styled from 'styled-components';
 import RowNoBottomMargin from '../common/RowNoBottomMargin';
-import InvisibleButton from '../../components/common/InvisibleButton';
 import fake_avatar from '../../images/fake_avatar.png';
 import TweetLike from "../../containers/TweetLike";
 import TweetDislike from '../../containers/TweetDislike'
 import Retweet from '../../containers/Retweet'
+import TweetEdit from '../../containers/TweetEdit'
 
 const Avatar = styled.img`
   width: 100%`
@@ -27,18 +27,7 @@ const TweetUnit = (props) => (
           </Col>
           <Col s={2} m={2} className="right-align">
             {props.current_user.id === props.user.id &&
-              <Dropdown trigger={
-                <InvisibleButton>
-                  <Icon>expand_more</Icon>
-                </InvisibleButton>
-              }>
-                <NavItem>
-                  <span className="grey-text text-darken-2">Edit</span>
-                </NavItem>
-                <NavItem onClick={() => props.deleteTweet(props.id)}>
-                  <span className="grey-text text-darken-2">Remove</span>
-                </NavItem>
-              </Dropdown>
+              <TweetEdit {...props}  />
             }
           </Col>
         </RowNoBottomMargin>

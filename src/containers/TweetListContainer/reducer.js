@@ -1,4 +1,4 @@
-import { FETCH_TWEETS, DELETE_TWEET, ADD_TWEET, LIKE_TWEET, DISLIKE_TWEET, ADD_RETWEET } from './constants';
+import { FETCH_TWEETS, DELETE_TWEET, ADD_TWEET, LIKE_TWEET, DISLIKE_TWEET, ADD_RETWEET, UPDATE_TWEET } from './constants';
 
 // The initial state of the App
 const initialState = { tweets: [] };
@@ -6,8 +6,7 @@ const initialState = { tweets: [] };
 const updateTweetOnList = (state, payload) => {
   return state.map((tweet) => {
     if (tweet.id === payload.id) {
-      tweet.liked = payload.liked
-      tweet.likes_count = payload.likes_count
+      tweet = payload
     }
     return tweet
   })
@@ -36,6 +35,8 @@ export default function (state = initialState, action) {
       return updateTweetOnList(state, action.payload)
     case ADD_RETWEET:
       return updateRetweetList([action.payload, ...state], action.payload) 
+    case UPDATE_TWEET:
+      return updateTweetOnList(state, action.payload) 
     default:
       return state;
   }
