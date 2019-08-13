@@ -1,25 +1,15 @@
 import React from "react";
-import { Row, Col, Card, Icon} from 'react-materialize';
-import styled from 'styled-components';
+import { Row, Col, Icon} from 'react-materialize';
 import RowNoBottomMargin from '../common/RowNoBottomMargin';
 import JustifiedText from '../common/JustifiedText';
 import UserFollow from '../../containers/UserFollow';
 import UserUnFollow from '../../containers/UserUnFollow';
 import fake_avatar from '../../images/fake_avatar.png';
-
-const Avatar = styled.img`
-  margin-top: 8px;
-  width: 100%`
-;
-
-const CardCustom = styled(Card)`
-  .card-content {
-    background: linear-gradient(to bottom, #616161 0% ,#616161 50% ,#000 50% ,white 50% ,white 100%);
-  }
-  `;
+import ProfileCard from './../ProfileCard'
+import Avatar from './../Avatar'
 
 const UserInfo = (props) => ( 
-  <CardCustom>
+  <ProfileCard>
     <RowNoBottomMargin>
       <Col m={8} s={8} offset="m2 s2" className="center">
         <Avatar src={(props.photo && props.photo.url) ? props.photo.url : fake_avatar } className="responsive-img circle m10" />
@@ -76,7 +66,7 @@ const UserInfo = (props) => (
         </a>
       </Col>
     </RowNoBottomMargin>
-  </CardCustom>
+  </ProfileCard>
 );
 
 export default UserInfo;
