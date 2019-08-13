@@ -13,7 +13,9 @@ class ProfilePageContainer extends Component {
 
   render() {
     return (
-      <ProfilePage followers={this.props.user.followers} />
+      <ProfilePage 
+        followers={this.props.user.followers} 
+        following={this.props.user.following} />
     );
   }
 }

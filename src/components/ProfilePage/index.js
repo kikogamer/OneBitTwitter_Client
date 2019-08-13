@@ -5,6 +5,7 @@ import UserInfoContainer from '../../containers/UserInfoContainer'
 import TweetListContainer from '../../containers/TweetListContainer'
 import TrendingTopicsContainer from '../../containers/TrendingTopicsContainer'
 import Followers from '../UserInfoList'
+import Following from '../UserInfoList'
 
 const ProfilePage = (props) => (
   <MainLayout>
@@ -18,9 +19,11 @@ const ProfilePage = (props) => (
             <TweetListContainer />
           </Tab>
           <Tab title='followers'>
-            <Followers followers={props.followers} />
+            <Followers userInfoList={props.followers} />
           </Tab>
-          <Tab title='following'></Tab>
+          <Tab title='following'>
+            <Following userInfoList={props.following} />
+          </Tab>
         </Tabs>
       </Col>
       <Col s={12} m={3}>

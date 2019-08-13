@@ -13,13 +13,14 @@ function array_chunk(arr, size){
   return tempArray
 }
 
-const Followers = (props) => {
-  if (props.followers) {
-    const followers = array_chunk(props.followers, 3)
-    return followers.map((follower, i) => {
+const UserInfoList = (props) => {
+  console.log(props)
+  if (props.userInfoList) {
+    const userInfoList = array_chunk(props.userInfoList, 3)
+    return userInfoList.map((userInfo, i) => {
       return (
         <Row key={i}>
-          {follower.map((item, i) => 
+          {userInfo.map((item, i) => 
             <Col s={12} m={4} key={i}>
               <BasicUserInfo {...item}></BasicUserInfo>
             </Col>
@@ -34,4 +35,4 @@ const Followers = (props) => {
   }
 }
 
-export default Followers;
+export default UserInfoList;
