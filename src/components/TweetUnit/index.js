@@ -7,6 +7,11 @@ import TweetLike from "../../containers/TweetLike";
 import TweetDislike from '../../containers/TweetDislike'
 import Retweet from '../../containers/Retweet'
 import TweetEdit from '../../containers/TweetEdit'
+import ReactTimeAgo from 'react-time-ago'
+import JavascriptTimeAgo from 'javascript-time-ago'
+import en from 'javascript-time-ago/locale/en'
+
+JavascriptTimeAgo.locale(en)
 
 const Avatar = styled.img`
   width: 100%`
@@ -24,6 +29,7 @@ const TweetUnit = (props) => (
         <RowNoBottomMargin>
           <Col s={10} m={10}>
             <b>{props.user.name}</b>
+            <ReactTimeAgo date={Date.parse(props.created_at)} className='right'/>
           </Col>
           <Col s={2} m={2} className="right-align">
             {props.current_user.id === props.user.id &&
