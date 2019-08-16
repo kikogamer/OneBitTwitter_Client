@@ -5,6 +5,8 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { getCurrentUser } from '../actions';
 
+import Spinner from 'react-spinner-material';
+
 class PrivateRoute extends React.Component {
   componentDidMount(){
     if(localStorage.jwt){
@@ -17,7 +19,7 @@ class PrivateRoute extends React.Component {
       localStorage.jwt ? (
         this.props.current_user.id ? (
           <Route {...this.props}> </Route> 
-        ) : 'Loading...'
+        ) : <Spinner size={120} spinnerColor={"#90caf9"} spinnerWidth={2} visible={true} />
       ):(
         <Redirect
           to={{
