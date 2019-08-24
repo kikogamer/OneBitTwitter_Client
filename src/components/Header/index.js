@@ -4,6 +4,8 @@ import { Navbar, NavItem, Row, Icon } from 'react-materialize';
 import styled from 'styled-components';
 import logo from '../../images/logo.png';
 
+import SearchBar from "../../containers/SearchBar";
+
 const NavbarBlue = styled(Navbar)`
   background-color: #75d3f4;`
 ;
@@ -19,6 +21,12 @@ const IconUser = styled(Icon)`
 const Header = (props) => (
   <Row>
     <NavbarBlue href="/timeline" brand={<Logo src={logo} className="responsive-img col m6 center" />} right>
+      <NavItem onClick={() => ''}>
+      <SearchBar/> 
+      </NavItem>
+      <NavItem>
+        <Icon>search</Icon> 
+      </NavItem>
       <NavItem onClick={() => props.logOut()} >
         Logout
       </NavItem>

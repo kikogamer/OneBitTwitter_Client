@@ -1,0 +1,1 @@
+export const UPDATE_SEARCH_LIST = 'search_bar/UPDATE_SEARCH_LIST';
