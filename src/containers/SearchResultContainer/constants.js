@@ -1,0 +1,1 @@
+export const QUERY_RESULTS = 'search/QUERY_RESULTS'

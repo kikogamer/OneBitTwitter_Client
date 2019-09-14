@@ -2,26 +2,26 @@ import React, { Component } from 'react'
 import Autocomplete from 'react-autocomplete'
 import { getSearchList } from './actions'
 import { bindActionCreators } from 'redux'
-import { connect } from 'react-redux';
+import { connect } from 'react-redux'
+import { setSearchValue } from './../../components/Search/actions'
 
 class SearchBar extends Component {
 
   constructor(props) {
     super(props)
-    this.state = {
-      value: ''
-    }
     this.editChange = this.editChange.bind(this)
     this.selectItem = this.selectItem.bind(this)
+    
   }
 
   editChange(event){
-    this.setState({ value: event.target.value })
+    this.props.setSearchValue(event.target.value)
     this.props.getSearchList(event.target.value)
   }
 
   selectItem(value){
-    this.setState({value: value})
+    this.props.setSearchValue(value)
+    this.props.search()
   }
 
   render() {
@@ -64,7 +64,7 @@ class SearchBar extends Component {
             {item.label}
           </div>
         }
-        value={this.state.value}
+        value={this.props.search_value}
         onChange={this.editChange}
         onSelect={this.selectItem}
       />
@@ -74,12 +74,13 @@ class SearchBar extends Component {
 
 function mapStateToProps(state) {
   return {
-    search_list: state.search_list
+    search_list: state.search_list,
+    search_value: state.search_value 
   }
 };
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ getSearchList }, dispatch)
+  return bindActionCreators({ getSearchList, setSearchValue }, dispatch)
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(SearchBar)

@@ -22,9 +22,9 @@ const Header = (props) => (
   <Row>
     <NavbarBlue href="/timeline" brand={<Logo src={logo} className="responsive-img col m6 center" />} right>
       <NavItem onClick={() => ''}>
-      <SearchBar/> 
+        <SearchBar search={props.search} /> 
       </NavItem>
-      <NavItem>
+      <NavItem onClick={() => props.search()}   >
         <Icon>search</Icon> 
       </NavItem>
       <NavItem onClick={() => props.logOut()} >

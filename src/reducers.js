@@ -5,6 +5,8 @@ import ImagePreviewReducer from './containers/ProfileEditContainer/reducer.js';
 import UserInfoReducer from './containers/UserInfoContainer/reducer.js';
 import TweetListReducer from './containers/TweetListContainer/reducer.js';
 import SearchBarReducer from './containers/SearchBar/reducer.js'
+import SearchReducer from './components/Search/reducer.js'
+import QueryResultReducer from './containers/SearchResultContainer/reducer'
 
 const rootReducer = combineReducers({
   trendings: TrendingTopicsReducer,
@@ -12,7 +14,9 @@ const rootReducer = combineReducers({
   image_preview: ImagePreviewReducer,
   user: UserInfoReducer,
   tweets: TweetListReducer,
-  search_list: SearchBarReducer
+  search_list: SearchBarReducer,
+  search_value: SearchReducer,
+  query_results: QueryResultReducer
 });
 
 export default rootReducer;
