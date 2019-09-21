@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 class TimelineContainer extends Component {
-
+  
   componentDidMount() {
     this.props.setUserInfo(this.props.current_user)
     this.props.getTimeline()
@@ -14,7 +14,7 @@ class TimelineContainer extends Component {
   render() {
     return (
       <div>
-        <Timeline />
+        <Timeline state={this.state} />
       </div>
     );
   }
